@@ -14,7 +14,6 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip3 freeze > requirements.txt
             pip3 install -r requirements.txt
     #3 Run coding convention software plus tester.
       - run:
@@ -24,6 +23,6 @@ jobs:
             flake8 –-exclude=venv* --statistics
             pytest --junitxml=test-results/junit.xml
       - store_test_results:
-          path: ~/test-results
+          path: test-results
       - store_artifacts:
-          path: ~/test-result
+          path: test-results
